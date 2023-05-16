@@ -5,13 +5,7 @@ export interface CountryType {
   name: {
     common: string;
     official: string;
-    nativeName: {
-      bis: {
-        official: string;
-        common: string;
-        nld:string;
-      };
-    };
+    nativeName: any;
   };
   borders:string[];
   cioc:string;

@@ -7,6 +7,12 @@ const router = useRouter()
 const route = useRoute()
 const country = ref(countriesData.countries.find(country => country.name.common === route.params.country))
 console.log(route.params.country)
+const nativeName =  computed(()=>{
+    const nativeName = Object.keys(country.value?.name.nativeName)[Object.keys(country.value?.name.nativeName).length-1]
+    const nativeNameValue = country.value?.name.nativeName[nativeName].common
+    return nativeNameValue
+})
+    
 const borderCountries = computed(() => {
     let countriesToReturn = [] as string[]
     if (country.value?.borders) {
@@ -44,7 +50,7 @@ interface Currency {
                 <div class="flex flex-col md:flex-row gap-16 lg:justify-between">
                     <div class="space-y-2">
                         <p>
-                            <span class="font-semibold mr-3" >Official Name:</span><span>{{ country.name.official }}</span>
+                            <span class="font-semibold mr-3" >Native Name:</span><span>{{ nativeName }}</span>
                         </p>
                         <p>
                             <span class="font-semibold mr-3">Population:</span>
